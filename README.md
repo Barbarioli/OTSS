@@ -12,11 +12,7 @@ Online Time Series Subsampling
 
 ### Pipeline
 
-The subsampler algorithm works in an online fashion by having a pipeline delimiting the piecewise stationary time series, and subsequently choosing the optimal subsample from each piece.
-
-Essentially there are two main algorithms working simultaneously:
-Breakpoint detection
-Subsampler
+The pipeline works by simultaneously delimiting the piecewise stationary time series. and subsampling from them an optimal size subsample. Multiprocessing is leveraged to ensure scalability.
 
 #### Subsampler
 
