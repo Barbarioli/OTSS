@@ -1,7 +1,7 @@
 # OTSS
 Online Time Series Subsampling
     
-## Pipeline
+## Documentation
 
 - [Online Time Series Subsampler](#Online Time Series Subsampler)
 - [Breakpoint Detection](#Breakpoint Detection)
