@@ -16,13 +16,13 @@ The pipeline works by simultaneously delimiting the piecewise stationary time se
 Uses a modification of the Empirical Bernstein to a time series block sample.
 
 ```python
-online_subsampler(data, queue, return_queue, index_queue,  block_size, epsilon, delta, variable_range, max_iteration)
+online_subsampler(data, queue, return_queue, index_queue,  block_size, epsilon, delta, variable_range, max_iteration = 1000)
 ```
 
 ### Breakpoint Detection
 
 ```python
-breakpoint_detection(data, queue, threshold=1, drift=0, ending=False, show=True, ax=None)
+breakpoint_detection(data, queue, threshold = 1, drift = 0, ending = False, show = True, ax = None)
 ```
 
 ### Competing Subsamplers
