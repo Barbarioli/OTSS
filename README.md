@@ -1,4 +1,4 @@
-# Online Time Series Subsampling (OTSS)
+# Online Time Series Subsampler (OTSS)
 OTSS is an algorithm to subsample time series while retaining their statistical properties.
     
 ## Documentation
