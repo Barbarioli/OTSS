@@ -30,10 +30,14 @@ breakpoint_detection(data, queue, threshold=1, drift=0, ending=False, show=True,
 #### Empirical Bernstein
 
 ```python
-empirical_bernstein(epsilon, delta, variable_range, sample):
+empirical_bernstein(epsilon, delta, variable_range, sample)
 ```
 
 #### Uniform Subsampler
+
+```python
+uniform_sampler(data, rate = 2)
+```
 
 ## Example
 
