@@ -27,5 +27,7 @@ online_subsampler(epsilon, delta, variable_range, block_size, data, queue, retur
 
 #### Uniform Subsampler
 
+## Example
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
