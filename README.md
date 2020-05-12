@@ -21,9 +21,17 @@ online_subsampler(epsilon, delta, variable_range, block_size, data, queue, retur
 
 ### Breakpoint Detection
 
+```python
+breakpoint_detection(data, queue, threshold=1, drift=0, ending=False, show=True, ax=None)
+```
+
 ### Competing Subsamplers
 
 #### Empirical Bernstein
+
+```python
+empirical_bernstein(epsilon, delta, variable_range, sample):
+```
 
 #### Uniform Subsampler
 
