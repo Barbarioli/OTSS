@@ -9,7 +9,7 @@ OTSS is an algorithm to subsample time series while retaining their statistical 
   + [Empirical Bernstein](#Empirical-Bernstein)
   + [Uniform Subsampler](#Uniform-Subsampler)
 
-The pipeline works by simultaneously delimiting the piecewise stationary time series, and subsampling from the individual pieces an optimal size subsample. Multiprocessing is leveraged to ensure scalability.
+The pipeline works by simultaneously delimiting the piecewise stationary time series, and subsampling an optimal size subsample from the individual pieces. Multiprocessing is leveraged to ensure scalability.
 
 ### Online Time Series Subsampler
 
