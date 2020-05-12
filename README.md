@@ -11,7 +11,7 @@ Online Time Series Subsampling
 
 The pipeline works by simultaneously delimiting the piecewise stationary time series. and subsampling from them an optimal size subsample. Multiprocessing is leveraged to ensure scalability.
 
-### Online Subsampler
+### Online Subsampler Time Series Subsampler
 
 Uses a modification of the Empirical Bernstein to a time series block sample.
 
