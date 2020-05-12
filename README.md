@@ -3,8 +3,8 @@ Online Time Series Subsampling
     
 ## Documentation
 
-- [Online Time Series Subsampler](#Online Time Series Subsampler)
-- [Breakpoint Detection](#Breakpoint Detection)
+- [Online Time Series Subsampler](#Online-Time-Series-Subsampler)
+- [Breakpoint Detection](#Breakpoint-Detection)
 - [Competing Subsamplers](#Competing Subsamplers)
   + [Empirical Bernstein](#Empirical Bernstein)
   + [Uniform Subsampler](#Uniform Subsampler)
