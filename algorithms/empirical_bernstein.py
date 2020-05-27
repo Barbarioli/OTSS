@@ -24,14 +24,14 @@ def empirical_bernstein(epsilon, delta, variable_range, sample, block_size = 1):
     p = 1.1
     c = delta * (p-1)/p
     last = None
-    values = []
+    values = pd.Series(sample[0:1])
 
 
     #Checking for stopping condition
     while ((epsilon + 1) * lower_bound < (1 - epsilon) * upper_bound):
 
         initial_value = randint(0,len(sample)-(block_size+1))
-        values.append(sample[initial_value:initial_value+block_size])
+        values = pd.concat([values, sample[initial_value:initial_value+block_size]])
         t += block_size
 
         #Adding new value
@@ -47,6 +47,7 @@ def empirical_bernstein(epsilon, delta, variable_range, sample, block_size = 1):
         #print('lower bound: ', lower_bound)
         upper_bound = min(upper_bound, np.abs(np.mean(values))+ct)
         #print('upper bound: ', upper_bound)
-
+    values = values.loc[~values.index.duplicated(keep = 'first')]
+    
 
     return values

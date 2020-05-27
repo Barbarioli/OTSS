@@ -1,10 +1,12 @@
 import numpy as np
+import pandas as pd
 
-def uniform_sampler(data, rate = 2):
+def uniform_sampler(data, rate = 5):
     
-    subsample = []
+    subsample = data[0:1]
     for i in range(0,len(data)):
         if i % rate == 0:
-            subsample.append(data[i])
+            subsample = pd.concat([subsample, data[i:i+1]])
     
     return subsample
+
