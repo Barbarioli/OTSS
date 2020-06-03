@@ -26,7 +26,6 @@ def empirical_bernstein(epsilon, delta, variable_range, sample, block_size = 1):
     last = None
     values = pd.Series(sample[0:1])
 
-
     #Checking for stopping condition
     while ((epsilon + 1) * lower_bound < (1 - epsilon) * upper_bound):
 
@@ -47,7 +46,7 @@ def empirical_bernstein(epsilon, delta, variable_range, sample, block_size = 1):
         #print('lower bound: ', lower_bound)
         upper_bound = min(upper_bound, np.abs(np.mean(values))+ct)
         #print('upper bound: ', upper_bound)
+    values = pd.concat([values, sample[(len(sample)-1):len(sample)]])
     values = values.loc[~values.index.duplicated(keep = 'first')]
     
-
     return values

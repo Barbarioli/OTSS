@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+from scipy.spatial.distance import euclidean
+from fastdtw import fastdtw
 from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.graphics.tsaplots import plot_acf
 from scipy.stats import linregress
@@ -18,14 +20,22 @@ def threshold_query(data, threshold):
 
 def interpolation_query(data, point, method = 'linear'):
 
+	new_data = data.interpolate(method)
+	return new_data[point]
 
-	if data[point] != np.nan:
-		return data[point]
-	else:
-		new_data = data.interpolate(method = method)
-		return new_data[point]
+def interpolation_distance(real_data, subsample_data, method = 'linear', distance = 'euclidean'):
 
-	return
+	interpolated_data = subsample_data.interpolate(method)
+	
+	if distance == 'euclidean':
+
+		euclidean_distance = np.linalg.norm(real_data-interpolated_data)
+		return euclidean_distance
+
+	elif distance == 'dtw':
+		distance, path = fastdtw(real_data, interpolated_data, dist=euclidean)
+		return distance
+
 
 def correlation_query(data, number_of_lags = 2, print_lags = True, plot = True):
 	

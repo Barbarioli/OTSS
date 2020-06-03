@@ -37,3 +37,4 @@ def subsample_analysis(return_queue, index_queue):
         relative_size = np.concatenate((relative_size, np.full(size,len(subsample)/size)), axis = None)
     
     return subsample_average, relative_size
+
