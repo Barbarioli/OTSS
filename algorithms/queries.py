@@ -52,6 +52,40 @@ def correlation_query(data, number_of_lags = 2, print_lags = True, plot = True):
 	
 	return	result
 
+def correlation_distance(data, subsample, number_of_lags = 2, distance = 'euclidean', print_lags = True, plot = True):
+	
+	result_real = []
+	result_subsample = []
+	for i in range(number_of_lags):
+		value_real = data.autocorr(lag = i+1)
+		value_subsample = subsample.autocorr(lag = i+1)
+		if print_lags:
+			print('lag ' + str(i) + ": ", value)
+
+		result_real.append(value_real)
+		result_subsample.append(value_subsample)
+
+	if distance == 'euclidean':
+
+		euclidean_distance = np.linalg.norm(np.array(result_real)-np.array(result_subsample))
+		return euclidean_distance
+
+	elif distance == 'dtw':
+		distance, path = fastdtw(result_real,result_subsample, dist=euclidean)
+		return distance
+
+def retrieve_data(return_queue):
+    
+    subsample = pd.Series(return_queue.get())
+        
+    while return_queue.empty() == False:
+        
+        subsample = pd.concat([subsample,pd.Series(return_queue.get())])
+    
+    return subsample
+
+
+
 def similarity_query(data, interval):
 
 	return

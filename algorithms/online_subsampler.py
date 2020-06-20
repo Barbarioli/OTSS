@@ -37,11 +37,12 @@ def online_subsampler(epsilon, delta, variable_range, block_size, data, queue, r
     c = delta * (p-1)/p
     last = None
     indexes = queue.get()
+    values = pd.Series(data[0:1])
 
     #Checking for stopping condition
     print('subsampler started')
     time.sleep(3)
-    while indexes:
+    while queue.empty != True:
         if (indexes[1] - indexes[0]) < block_size:
             print('Block size greater than data interval')
             print("----*----")
@@ -54,13 +55,13 @@ def online_subsampler(epsilon, delta, variable_range, block_size, data, queue, r
         lower_bound = -1000000000000
         t = 1
         k = 0
-        values = np.empty(1)
+        #values = np.empty(1)
         iteration = 0
         
         while ((epsilon + 1) * lower_bound < (1 - epsilon) * upper_bound):
 
             initial_value = randint(0,len(sample)-(block_size+1))
-            values = np.concatenate((values,sample[initial_value:initial_value+block_size]), axis = None)
+            values = pd.concat((values,sample[initial_value:initial_value+block_size]))
             t += block_size
 
             #Adding new value
@@ -78,10 +79,13 @@ def online_subsampler(epsilon, delta, variable_range, block_size, data, queue, r
             iteration += 1
             if iteration == max_iteration or len(values) >= len(sample):
                 break
-                
+                 
         if iteration == max_iteration or len(values) >= len(sample):
-            return_queue.put(sample)
+            return_queue.put(pd.Series(sample))
         else:
+            values = pd.concat([values, data[indexes[1]-1:indexes[1]]])
+            #print(data[indexes[1]-1:indexes[1]])
+            values = values.loc[~values.index.duplicated(keep = 'first')]
             return_queue.put(values)
         
         if iteration == max_iteration or len(values) >= len(sample):
@@ -92,6 +96,8 @@ def online_subsampler(epsilon, delta, variable_range, block_size, data, queue, r
         print("----*----")
         index = indexes
         index_queue.put(index)
-        indexes = queue.get()
-        
-    return
+        try:
+            indexes = queue.get(timeout = 1)
+        except:
+            print('Done')   
+            return

@@ -53,6 +53,8 @@ def detection(x,queue, threshold=1, drift=0, ending=False, show=True, ax=None):
                 print('moving to next block')
             tai = np.append(tai, tap if gp[i] > threshold else tan)  # start
             gp[i], gn[i] = 0, 0      # reset alarm
+        if i == x.size-1:
+            queue.put((ta[-1], x.size))
     #print(queue_fake)
             
     if show:
