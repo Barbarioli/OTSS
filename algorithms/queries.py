@@ -37,7 +37,7 @@ def interpolation_distance(real_data, subsample_data, method = 'linear', distanc
 		return distance
 
 
-def correlation_query(data, number_of_lags = 2, print_lags = True, plot = True):
+def correlation_query(data, number_of_lags = 2, print_lags = False, plot = False):
 	
 	result = []
 	for i in range(number_of_lags):
@@ -52,7 +52,7 @@ def correlation_query(data, number_of_lags = 2, print_lags = True, plot = True):
 	
 	return	result
 
-def correlation_distance(data, subsample, number_of_lags = 2, distance = 'euclidean', print_lags = True, plot = True):
+def correlation_distance(data, subsample, number_of_lags = 2, distance = 'euclidean', print_lags = False, plot = False):
 	
 	result_real = []
 	result_subsample = []
