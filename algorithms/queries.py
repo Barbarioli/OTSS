@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import euclidean
-from fastdtw import fastdtw
+#from fastdtw import fastdtw
 from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.graphics.tsaplots import plot_acf
 from scipy.stats import linregress
