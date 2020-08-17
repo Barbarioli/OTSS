@@ -1,9 +1,9 @@
-# Online Time Series Subsampler (OTSS)
+# Adaptive Online Block Subsampling for Time Series Data (OTSS)
 OTSS is an algorithm to subsample time series while retaining their statistical properties.
     
 ## Documentation
 
-- [Online Time Series Subsampler](#Online-Time-Series-Subsampler)
+- [Subsampler](#Subsampler)
 - [Breakpoint Detection](#Breakpoint-Detection)
 - [Competing Subsamplers](#Competing-Subsamplers)
   + [Empirical Bernstein](#Empirical-Bernstein)
@@ -11,9 +11,9 @@ OTSS is an algorithm to subsample time series while retaining their statistical 
 
 The pipeline works by simultaneously delimiting the piecewise stationary time series, and subsampling an optimal size subsample from the individual pieces. Multiprocessing is leveraged to ensure scalability.
 
-### Online Time Series Subsampler
+### Subsampler
 
-Uses a modification of the Empirical Bernstein to a time series block sample.
+There are 4 typers of subsamplers:
 
 ```python
 online_subsampler(data, queue, return_queue, index_queue,  block_size, epsilon, delta, variable_range, max_iteration = 1000)
