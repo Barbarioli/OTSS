@@ -6,7 +6,8 @@ from algorithms.uniform_subsampler import *
 def size_optimizer(data, size_online_subsample, range_series, error = 0.20):
 
 	len_data = len(data)
-	uniform_size = int(len_data/size_online_subsample)
+	uniform_size = np.ceil(len_data/size_online_subsample)
+	#print(len_data, size_online_subsample)
 	uniform_sample = uniform_sampler(data, uniform_size)
 
 	approximation = 0.25

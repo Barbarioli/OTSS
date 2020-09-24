@@ -37,6 +37,7 @@ def online_subsampler(epsilon, delta, variable_range, block_size, data, queue, r
     c = delta * (p-1)/p
     last = None
     indexes = queue.get()
+    print(data[0:1])
     values = pd.Series(data[0:1])
 
     #Checking for stopping condition

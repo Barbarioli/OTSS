@@ -7,10 +7,10 @@ import math
 from random import randint
 import sys
 import warnings
+from datetime import datetime
 
 if not sys.warnoptions:
     warnings.simplefilter("ignore")
-
 
 def detection(x,queue, threshold=1, drift=0, ending=False, show=True, ax=None):
     """Breakpoint detection per Montgomery,D. 1996 "Introduction to Statistical Process Control" adapted for a multiprocessing online scenario
@@ -26,6 +26,7 @@ def detection(x,queue, threshold=1, drift=0, ending=False, show=True, ax=None):
     queue: index values for the stationary series intervals
     """
     print("breakpoint started")
+    start=datetime.now()
     x = np.atleast_1d(x).astype('float64')
     gp, gn = np.zeros(x.size), np.zeros(x.size)
     ta, tai, taf = np.array([[], [], []], dtype=int)
@@ -60,6 +61,7 @@ def detection(x,queue, threshold=1, drift=0, ending=False, show=True, ax=None):
     if show:
         _plot(x, threshold, drift, ending, ax, ta, tai, taf, gp, gn)
 
+    print('time taken', datetime.now()-start)
     return ta, tai, taf, amp
 
 
